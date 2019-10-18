@@ -1,0 +1,79 @@
+<div class="container">
+
+    <div class="container">
+        <div class="row mb-4 mt-4">
+            <div class="col-10">
+            </div>
+
+            <div class="col-1">
+                <button class="btn btn-success btn-sm" id="home" type="submit">Home</button>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-white btn-sm" id="scrape" type="submit">Scrape</button>
+            </div>
+        </div>
+        <div class="row mt-5 titlepage"></div>
+        <h1 class="text-center mb-2">Latest from LA Times</h1>
+
+        <h1 class="text-center mb-2">Your Reading List</h1>
+        <hr class="mb-5">
+
+    </div>
+
+    <div class="container">
+
+        {{#each articles}}
+        <div class="row mb-3 articlestyle">
+            <div class="col-3 mb-1">
+                <img style="width:240px;height:160px;" src="{{{image}}}">
+            </div>
+
+            <div class="col-5">
+                <row class='title mb-1'>
+                    {{title}}
+                </row>
+                <br>
+                <row class='summary'>
+                    {{summary}}
+                </row>
+            </div>
+            <div class="col-2 align-middle summary">
+                {{formatDate date day="numeric" month="long" year="numeric"}}
+            </div>
+            <div class="col-1">
+                <button class="deletearticle buttonstyle1" data-id="{{_id}}">Delete</button>
+            </div>
+            <div class="col-1">
+                <button class="buttonstyle2" id="viewnotes" data-id="{{_id}}">Notes</button>
+            </div>
+
+        </div>
+
+        {{/each}}
+
+        <div class="modal fade" id="modalnote" tabindex="-1" role="dialog" aria-labelledby="my-modal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="list-group" id="thenotes">
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <label for="notetitle" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="notetitle">
+                            <label for="notebody" class="col-form-label">Note:</label>
+                            <input type="text" class="form-control" id="notebody">
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="col-4" id="buttonsaved">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/app.js"></script>

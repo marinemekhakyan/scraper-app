@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row mb-4 mt-4">
+        <div class="col-10">
+        </div>
+        <div class="col-1">
+            <button class="btn btn-success btn-sm" id="mynews" type="submit">My News</button>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-white btn-sm" id="scrape" type="submit">Scrape</button>
+        </div>
+    </div>
+    <div class="row mt-5 titlepage"></div>
+    <h1 class="text-center mb-2">Latest from LA Times - Mongo Scraper</h1>
+    <hr class="mb-5">
+</div>
+
+<div class="container">
+
+    {{#each articles}}
+    <div class="row mb-3 articlestyle">
+        <div class="col-3 mb-1">
+            <a target="_blank" href="{{{link}}}">
+                <img style="width:240px;height:160px;" src="{{{image}}}">
+            </a>
+        </div>
+
+        <div class="col-5">
+            <row class='title mb-1'>
+                {{title}}
+            </row>
+            <br>
+            <row class='summary'>
+                {{summary}}
+            </row>
+        </div>
+        <div class="col-2 align-middle summary">
+            {{formatDate date day="numeric" month="long" year="numeric"}}
+        </div>
+        <div class="col-2">
+            <button class="savearticle buttonstyle1 align-middle" data-id="{{_id}}">Save Article</button>
+        </div>
+    </div>
+    {{/each}}
+
+</div>
+</div>
+
+<script src="../js/app.js"> </script>
