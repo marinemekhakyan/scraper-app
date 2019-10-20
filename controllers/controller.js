@@ -6,19 +6,20 @@ var Promise = require("bluebird")
 module.exports = function (app) {
     app.get("/", function (req, res) {
         request.get("https://www.latimes.com/travel", function (error, response, body) {
-            console.log("Error: ", error);
-            console.log("statusCode: ", response && response.statusCode);
-
+            // console.log("Error: ", error);
+            // console.log("statusCode: ", response && response.statusCode);
+            console.log(response);
             var $ = cheerio.load(body);
             var allArticles = { "articles": [] };
+            // console.log(allArticles);
 
-            Promise.each($(".ListW-items").get(), function (newArticles) {
-                console.log(newArticles);
+            Promise.each($(".ListW-items-item").get(), function (newArticle) {
+                // console.log(newArticles);
                 var result = {};
-                result.title = $(newArticles).find("PromoSmall-title").text().trim();
-                result.summary = $(newArticles).find("PromoSmall-description").text().trim();
-                result.link = $(newArticles).find("a").attr("href");
-                result.image = $(newArticles).find("img").attr("data-src");
+                result.title = $(newArticle).find(".PromoSmall-title a").text().trim();
+                // result.summary = $(newArticles).find("PromoSmall-description").text().trim();
+                result.link = $(newArticle).find(".PromoSmall-title a").attr("href");
+                result.image = $(newArticle).find("img.Image").attr("data-src");
 
                 allArticles.articles.push(result);
             })
