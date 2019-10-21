@@ -1,6 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
-var handlebars = require("handlebars");
+var Handlebars = require("handlebars");
+var HandlebarsIntl = require("handlebars-intl");
 
 var PORT = process.env.PORT || 8080;
 
@@ -13,6 +14,7 @@ app.use(express.static("public"));
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+HandlebarsIntl.registerWith(Handlebars);
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
 

@@ -1,0 +1,17 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif; 
+}
+
+#scrape {
+    background-color: #EDE939;
+}
+
+.savearticle, .deletearticle, #viewnotes {
+    color: black;
+    border-color: green;
+}

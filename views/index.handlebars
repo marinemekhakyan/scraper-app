@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="row mt-5 titlepage"></div>
-    <h1 class="text-center mb-2">Latest from LA Times - Mongo Scraper</h1>
+    <h1 class="text-center mb-2">Latest from LA Times Travel - Mongo Scraper</h1>
     <hr class="mb-5">
 </div>
 
@@ -33,11 +33,11 @@
                 {{summary}}
             </row>
         </div>
-        {{!-- <div class="col-2 align-middle summary">
+        <div class="col-2 align-middle summary">
             {{formatDate date day="numeric" month="long" year="numeric"}}
-        </div> --}}
+        </div>
         <div class="col-2">
-            <button class="savearticle buttonstyle1 align-middle" data-id="{{_id}}">Save Article</button>
+            <button class="savearticle btn btn-sm align-middle" data-id="{{_id}}">Save Article</button>
         </div>
     </div>
     {{/each}}

@@ -1,24 +1,19 @@
 var cheerio = require("cheerio");
 var db = require("../models");
 var request = require("request");
-var Promise = require("bluebird")
+var Promise = require("bluebird");
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
         request.get("https://www.latimes.com/travel", function (error, response, body) {
-            // console.log("Error: ", error);
-            // console.log("statusCode: ", response && response.statusCode);
             console.log(response);
             var $ = cheerio.load(body);
             var allArticles = { "articles": [] };
-            // console.log(allArticles);
 
             Promise.each($(".ListW-items-item").get(), function (newArticle) {
-                // console.log(newArticles);
                 var result = {};
                 result.title = $(newArticle).find(".PromoSmall-title a").text().trim();
-                // result.summary = $(newArticles).find("PromoSmall-description").text().trim();
-                result.link = $(newArticle).find(".PromoSmall-title a").attr("href");
+                // result.link = $(newArticle).find(".PromoSmall-title a").attr("href");
                 result.image = $(newArticle).find("img.Image").attr("data-src");
 
                 allArticles.articles.push(result);
@@ -31,7 +26,7 @@ module.exports = function (app) {
                 });
 
         });
-    })
+    });
 
     function updateDB(result) {
         for (var i = result.articles.length - 1; i >= 0; i--) {
@@ -40,7 +35,6 @@ module.exports = function (app) {
 
                 }).catch(function (err) {
                     console.error("Error!");
-                    // res.json(err);
                 });
         }
     }

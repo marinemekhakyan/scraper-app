@@ -9,11 +9,10 @@
                 <button class="btn btn-success btn-sm" id="home" type="submit">Home</button>
             </div>
             <div class="col-1">
-                <button class="btn btn-white btn-sm" id="scrape" type="submit">Scrape</button>
+                <button class="btn btn-sm" id="scrape" type="submit">Scrape</button>
             </div>
         </div>
         <div class="row mt-5 titlepage"></div>
-        <h1 class="text-center mb-2">Latest from LA Times</h1>
 
         <h1 class="text-center mb-2">Your Reading List</h1>
         <hr class="mb-5">
@@ -37,14 +36,14 @@
                     {{summary}}
                 </row>
             </div>
-            {{!-- <div class="col-2 align-middle summary">
+            <div class="col-2 align-middle summary">
                 {{formatDate date day="numeric" month="long" year="numeric"}}
-            </div> --}}
-            <div class="col-1">
-                <button class="deletearticle buttonstyle1" data-id="{{_id}}">Delete</button>
             </div>
             <div class="col-1">
-                <button class="buttonstyle2" id="viewnotes" data-id="{{_id}}">Notes</button>
+                <button class="deletearticle btn btn-white btn-sm" data-id="{{_id}}">Delete</button>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-white btn-sm" id="viewnotes" data-id="{{_id}}">Comments</button>
             </div>
 
         </div>
@@ -59,9 +58,9 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <label for="notetitle" class="col-form-label">Title:</label>
+                            <label for="notetitle" class="col-form-label">Name:</label>
                             <input type="text" class="form-control" id="notetitle">
-                            <label for="notebody" class="col-form-label">Note:</label>
+                            <label for="notebody" class="col-form-label">Comment:</label>
                             <input type="text" class="form-control" id="notebody">
                         </form>
                     </div>
